@@ -374,8 +374,8 @@ textarea {
 /* Modal - sayfa ortasında */
 .modal {
     position: fixed;
-    top: 50%;
-    left: 50%;
+    top: 20%;
+    left: 20%;
     transform: translate(-50%, -50%) scale(0.7);
     width: 90%;
     max-width: 500px;
