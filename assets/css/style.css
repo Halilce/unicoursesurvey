@@ -374,12 +374,12 @@ textarea {
 /* Modal - sayfa ortasında */
 .modal {
     position: fixed;
-    top: 20%;
-    left: 20%;
+    top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%) scale(0.7);
     width: 90%;
-    max-width: 500px;
-    max-height: 90vh;
+    max-width: 700px;
+    max-height: 100vh;
     background: white;
     border-radius: 10px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
