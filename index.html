@@ -235,29 +235,33 @@
                     
                     <div class="form-group">
                         <span class="question-label">6. Daha önce herhangi bir programlama dili ile deneyiminiz oldu mu?</span>
-                        <div class="radio-group">
-                            <div class="radio-item">
-                                <input type="radio" id="prog1" name="programming" value="Evet, Python">
-                                <label for="prog1">Evet, Python</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="prog1" name="programming" value="Evet, PHP/Laravel">
+                                <label for="prog1">Evet, PHP/Laravel</label>
                             </div>
-                            <div class="radio-item">
-                                <input type="radio" id="prog2" name="programming" value="Evet, Java">
-                                <label for="prog2">Evet, Java</label>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="prog2" name="programming" value="Evet, Python/Django">
+                                <label for="prog2">Evet, Python/Django</label>
                             </div>
-                            <div class="radio-item">
-                                <input type="radio" id="prog3" name="programming" value="Evet, C/C++">
-                                <label for="prog3">Evet, C/C++</label>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="prog3" name="programming" value="Evet, Java">
+                                <label for="prog3">Evet, Java</label>
                             </div>
-                            <div class="radio-item">
-                                <input type="radio" id="prog4" name="programming" value="Evet, JavaScript">
-                                <label for="prog4">Evet, JavaScript</label>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="prog4" name="programming" value="Evet, C/C++">
+                                <label for="prog4">Evet, C/C++</label>
                             </div>
-                            <div class="radio-item">
-                                <input type="radio" id="prog5" name="programming" value="Hayır, hiç programlama deneyimim yok">
-                                <label for="prog5">Hayır, hiç programlama deneyimim yok</label>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="prog5" name="programming" value="Evet, JavaScript">
+                                <label for="prog5">Evet, JavaScript</label>
                             </div>
-                            <div class="radio-item">
-                                <input type="radio" id="progOther" name="programming" value="other">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="prog6" name="programming" value="Hayır, hiç programlama deneyimim yok">
+                                <label for="prog6">Hayır, hiç programlama deneyimim yok</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="progOther" name="programming" value="other">
                                 <label for="progOther">Evet, başka</label>
                             </div>
                             <input type="text" id="progOtherText" class="other-input" placeholder="Hangi dil(ler)?">
@@ -493,9 +497,9 @@
                 <!-- Form Action Buttons -->
                 <div class="btn-container">
                     <button type="submit" class="btn btn-primary">Formu Tamamla</button>
-                    <button type="button" class="btn btn-secondary" id="downloadPdf" style="display: none;">📥 PDF İndir</button>
+                    <!-- <button type="button" class="btn btn-secondary" id="downloadPdf" style="display: none;">📥 PDF İndir</button> -->
                     <button type="button" class="btn btn-email" id="sendEmail" style="display: none; background: #EA4335;">📧 E-posta Gönder</button>
-                    <button type="button" class="btn btn-whatsapp" id="sendWhatsapp" style="display: none; background: #25D366;">📱 WhatsApp Gönder</button>
+                    <!-- <button type="button" class="btn btn-whatsapp" id="sendWhatsapp" style="display: none; background: #25D366;">📱 WhatsApp Gönder</button> -->
                 </div>
             </form>
         </div>
