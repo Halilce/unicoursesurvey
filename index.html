@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Öğrenci Tanışma ve Beklenti Formu</title>
+    
+    <!-- External Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/themes.css">
+</head>
+<body>
+    <!-- Loading Spinner -->
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+    </div>
+
+    <div class="container" id="formContainer">
+        <!-- Header Section -->
+        <div class="header">
+            <h1>🎓 ÜNİVERSİTE 1. SINIF TANIŞMA VE DERS BEKLENTİLERİ FORMU</h1>
+            <p>Kurumsal Bilişim Uzmanlığı Bölümü</p>
+        </div>
+
+        <div class="form-content">
+            <!-- Success Message -->
+            <div class="success-message" id="successMessage">
+                ✅ Form başarıyla dolduruldu! PDF indirmeye hazır.
+            </div>
+
+            <form id="studentForm">
+                <!-- Kişisel Bilgiler Bölümü -->
+                <div class="section" id="personal-info-section">
+                    <h2 class="section-title">KİŞİSEL BİLGİLER</h2>
+                    <div class="personal-info">
+                        <div class="form-group">
+                            <label for="name">Adınız Soyadınız:</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="studentNo">Öğrenci Numaranız:</label>
+                            <input type="number" id="studentNo" name="studentNo" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-posta Adresiniz:</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Telefon Numaranız:</label>
+                            <input type="text" id="phone" name="phone" placeholder="05XX XXX XX XX">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bölüm A: Kurumsal Bilişim Uzmanlığı Tercih Nedenleri -->
+                <div class="section" id="section-a">
+                    <h2 class="section-title">BÖLÜM A: KURUMSAL BİLİŞİM UZMANLIĞI TERCİH NEDENLERİ</h2>
+                    
+                    <div class="form-group">
+                        <span class="question-label">1. Kurumsal Bilişim Uzmanlığı bölümünü tercih etmenizde en etkili faktör nedir?</span>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="reason1" name="reason" value="Teknolojiye olan ilgim">
+                                <label for="reason1">Teknolojiye olan ilgim</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="reason2" name="reason" value="İş imkanlarının genişliği">
+                                <label for="reason2">İş imkanlarının genişliği</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="reason3" name="reason" value="Aile/çevre tavsiyesi">
+                                <label for="reason3">Aile/çevre tavsiyesi</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="reason4" name="reason" value="Üniversite sınav puanım">
+                                <label for="reason4">Üniversite sınav puanım</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="reason5" name="reason" value="Gelecekte kendi işimi kurma hedefi">
+                                <label for="reason5">Gelecekte kendi işimi kurma hedefi</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="reasonOther" name="reason" value="other">
+                                <label for="reasonOther">Diğer</label>
+                            </div>
+                            <input type="text" id="reasonOtherText" class="other-input" placeholder="Lütfen belirtiniz">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <span class="question-label">2. Bu bölümden mezun olduktan sonra hangi alanda çalışmayı hedefliyorsunuz?</span>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="career1" name="career" value="Yazılım geliştirme">
+                                <label for="career1">Yazılım geliştirme</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="career2" name="career" value="Sistem yönetimi">
+                                <label for="career2">Sistem yönetimi</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="career3" name="career" value="Veri analizi">
+                                <label for="career3">Veri analizi</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="career4" name="career" value="Siber güvenlik">
+                                <label for="career4">Siber güvenlik</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="career5" name="career" value="Proje yönetimi">
+                                <label for="career5">Proje yönetimi</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="career6" name="career" value="IT danışmanlığı">
+                                <label for="career6">IT danışmanlığı</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="career7" name="career" value="Henüz karar vermedim">
+                                <label for="career7">Henüz karar vermedim</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="careerOther" name="career" value="other">
+                                <label for="careerOther">Diğer</label>
+                            </div>
+                            <input type="text" id="careerOtherText" class="other-input" placeholder="Lütfen belirtiniz">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <span class="question-label">3. Bölüme başlamadan önce bilişim alanında herhangi bir deneyiminiz var mı?</span>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="exp1" name="experience" value="Evet, hobi olarak ilgileniyordum">
+                                <label for="exp1">Evet, hobi olarak ilgileniyordum</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="exp2" name="experience" value="Evet, lisede ilgili dersler aldım">
+                                <label for="exp2">Evet, lisede ilgili dersler aldım</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="exp3" name="experience" value="Evet, online kurslar/sertifikalar aldım">
+                                <label for="exp3">Evet, online kurslar/sertifikalar aldım</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="exp4" name="experience" value="Hayır, hiç deneyimim yok">
+                                <label for="exp4">Hayır, hiç deneyimim yok</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="expOther" name="experience" value="other">
+                                <label for="expOther">Diğer</label>
+                            </div>
+                            <input type="text" id="expOtherText" class="other-input" placeholder="Lütfen açıklayınız">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bölüm B: Bilişim Teknolojileri Dersi -->
+                <div class="section" id="section-b">
+                    <h2 class="section-title">BÖLÜM B: BİLİŞİM TEKNOLOJİLERİ DERSİ</h2>
+                    
+                    <div class="form-group">
+                        <span class="question-label">4. Bilişim Teknolojileri dersinden beklentiniz nedir?</span>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="itexp1" name="itexpectation" value="Temel bilgisayar bilgisi edinmek">
+                                <label for="itexp1">Temel bilgisayar bilgisi edinmek</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="itexp2" name="itexpectation" value="Donanım-yazılım ilişkisini anlamak">
+                                <label for="itexp2">Donanım-yazılım ilişkisini anlamak</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="itexp3" name="itexpectation" value="Güncel teknolojileri öğrenmek">
+                                <label for="itexp3">Güncel teknolojileri öğrenmek</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="itexp4" name="itexpectation" value="İş hayatına yönelik pratik bilgiler">
+                                <label for="itexp4">İş hayatına yönelik pratik bilgiler</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="itexp5" name="itexpectation" value="Diğer alan derslerine temel oluşturması">
+                                <label for="itexp5">Diğer alan derslerine temel oluşturması</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="itexpOther" name="itexpectation" value="other">
+                                <label for="itexpOther">Diğer</label>
+                            </div>
+                            <input type="text" id="itexpOtherText" class="other-input" placeholder="Lütfen belirtiniz">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <span class="question-label">5. Aşağıdaki konulardan hangilerinde kendinizi geliştirmek istersiniz? (Birden fazla seçebilirsiniz)</span>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="topic1" name="topics" value="İşletim sistemleri">
+                                <label for="topic1">İşletim sistemleri</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="topic2" name="topics" value="Ofis yazılımları">
+                                <label for="topic2">Ofis yazılımları</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="topic3" name="topics" value="Ağ teknolojileri temelleri">
+                                <label for="topic3">Ağ teknolojileri temelleri</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="topic4" name="topics" value="Bulut teknolojileri">
+                                <label for="topic4">Bulut teknolojileri</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="topic5" name="topics" value="Mobil teknolojiler">
+                                <label for="topic5">Mobil teknolojiler</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="topic6" name="topics" value="Yapay zeka ve makine öğrenmesi">
+                                <label for="topic6">Yapay zeka ve makine öğrenmesi</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="topicOther" name="topics" value="other">
+                                <label for="topicOther">Diğer</label>
+                            </div>
+                            <input type="text" id="topicOtherText" class="other-input" placeholder="Lütfen belirtiniz">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bölüm C: Programlamanın Temelleri Dersi -->
+                <div class="section" id="section-c">
+                    <h2 class="section-title">BÖLÜM C: PROGRAMLAMANIN TEMELLERİ DERSİ</h2>
+                    
+                    <div class="form-group">
+                        <span class="question-label">6. Daha önce herhangi bir programlama dili ile deneyiminiz oldu mu?</span>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="prog1" name="programming" value="Evet, Python">
+                                <label for="prog1">Evet, Python</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="prog2" name="programming" value="Evet, Java">
+                                <label for="prog2">Evet, Java</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="prog3" name="programming" value="Evet, C/C++">
+                                <label for="prog3">Evet, C/C++</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="prog4" name="programming" value="Evet, JavaScript">
+                                <label for="prog4">Evet, JavaScript</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="prog5" name="programming" value="Hayır, hiç programlama deneyimim yok">
+                                <label for="prog5">Hayır, hiç programlama deneyimim yok</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="progOther" name="programming" value="other">
+                                <label for="progOther">Evet, başka</label>
+                            </div>
+                            <input type="text" id="progOtherText" class="other-input" placeholder="Hangi dil(ler)?">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <span class="question-label">7. Programlama öğrenirken en çok zorlanacağınızı düşündüğünüz konu hangisi?</span>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="diff1" name="difficulty" value="Algoritma mantığını kavrama">
+                                <label for="diff1">Algoritma mantığını kavrama</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="diff2" name="difficulty" value="Söz dizimi (syntax) kuralları">
+                                <label for="diff2">Söz dizimi (syntax) kuralları</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="diff3" name="difficulty" value="Problem çözme yaklaşımı">
+                                <label for="diff3">Problem çözme yaklaşımı</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="diff4" name="difficulty" value="Hata ayıklama (debugging)">
+                                <label for="diff4">Hata ayıklama (debugging)</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="diff5" name="difficulty" value="Matematiksel işlemler">
+                                <label for="diff5">Matematiksel işlemler</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="diff6" name="difficulty" value="Zorlanacağımı düşünmüyorum">
+                                <label for="diff6">Zorlanacağımı düşünmüyorum</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="diffOther" name="difficulty" value="other">
+                                <label for="diffOther">Diğer</label>
+                            </div>
+                            <input type="text" id="diffOtherText" class="other-input" placeholder="Lütfen açıklayınız">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <span class="question-label">8. Programlama dersinde hangi öğrenme yönteminin sizin için daha etkili olacağını düşünüyorsunuz?</span>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="learn1" name="learning" value="Teorik anlatım ve sunumlar">
+                                <label for="learn1">Teorik anlatım ve sunumlar</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="learn2" name="learning" value="Uygulamalı laboratuvar çalışmaları">
+                                <label for="learn2">Uygulamalı laboratuvar çalışmaları</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="learn3" name="learning" value="Proje tabanlı öğrenme">
+                                <label for="learn3">Proje tabanlı öğrenme</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="learn4" name="learning" value="Grup çalışmaları">
+                                <label for="learn4">Grup çalışmaları</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="learn5" name="learning" value="Video eğitimler ve online kaynaklar">
+                                <label for="learn5">Video eğitimler ve online kaynaklar</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="learn6" name="learning" value="Birebir mentörlük">
+                                <label for="learn6">Birebir mentörlük</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="learnOther" name="learning" value="other">
+                                <label for="learnOther">Diğer</label>
+                            </div>
+                            <input type="text" id="learnOtherText" class="other-input" placeholder="Lütfen belirtiniz">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bölüm D: Siber Güvenlik ve Veri Güvenliği Dersi -->
+                <div class="section" id="section-d">
+                    <h2 class="section-title">BÖLÜM D: SİBER GÜVENLİK VE VERİ GÜVENLİĞİ DERSİ</h2>
+                    
+                    <div class="form-group">
+                        <span class="question-label">9. Siber güvenlik konusunda farkındalık düzeyinizi nasıl tanımlarsınız?</span>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="sec1" name="security" value="Çok yüksek - aktif olarak takip ediyorum">
+                                <label for="sec1">Çok yüksek - aktif olarak takip ediyorum</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="sec2" name="security" value="Yüksek - genel bilgiye sahibim">
+                                <label for="sec2">Yüksek - genel bilgiye sahibim</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="sec3" name="security" value="Orta - temel kavramları biliyorum">
+                                <label for="sec3">Orta - temel kavramları biliyorum</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="sec4" name="security" value="Düşük - çok az bilgim var">
+                                <label for="sec4">Düşük - çok az bilgim var</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="sec5" name="security" value="Çok düşük - hiç bilgim yok">
+                                <label for="sec5">Çok düşük - hiç bilgim yok</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="secOther" name="security" value="other">
+                                <label for="secOther">Diğer</label>
+                            </div>
+                            <input type="text" id="secOtherText" class="other-input" placeholder="Açıklama">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <span class="question-label">10. Aşağıdaki siber güvenlik konularından hangisi sizi en çok ilgilendiriyor?</span>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="cyber1" name="cybertopic" value="Etik hacking ve penetrasyon testleri">
+                                <label for="cyber1">Etik hacking ve penetrasyon testleri</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="cyber2" name="cybertopic" value="Veri şifreleme teknikleri">
+                                <label for="cyber2">Veri şifreleme teknikleri</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="cyber3" name="cybertopic" value="Ağ güvenliği">
+                                <label for="cyber3">Ağ güvenliği</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="cyber4" name="cybertopic" value="Sosyal mühendislik ve farkındalık">
+                                <label for="cyber4">Sosyal mühendislik ve farkındalık</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="cyber5" name="cybertopic" value="Güvenlik politikaları ve uyumluluk">
+                                <label for="cyber5">Güvenlik politikaları ve uyumluluk</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="cyber6" name="cybertopic" value="Adli bilişim">
+                                <label for="cyber6">Adli bilişim</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="cyber7" name="cybertopic" value="Hepsi ilgimi çekiyor">
+                                <label for="cyber7">Hepsi ilgimi çekiyor</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="cyberOther" name="cybertopic" value="other">
+                                <label for="cyberOther">Diğer</label>
+                            </div>
+                            <input type="text" id="cyberOtherText" class="other-input" placeholder="Lütfen belirtiniz">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <span class="question-label">11. Kişisel dijital güvenlik alışkanlıklarınız hakkında bilgi veriniz: (Birden fazla seçebilirsiniz)</span>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="habit1" name="habits" value="Güçlü ve farklı şifreler kullanıyorum">
+                                <label for="habit1">Güçlü ve farklı şifreler kullanıyorum</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="habit2" name="habits" value="İki faktörlü doğrulama kullanıyorum">
+                                <label for="habit2">İki faktörlü doğrulama kullanıyorum</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="habit3" name="habits" value="Düzenli yedekleme yapıyorum">
+                                <label for="habit3">Düzenli yedekleme yapıyorum</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="habit4" name="habits" value="Antivirüs yazılımı kullanıyorum">
+                                <label for="habit4">Antivirüs yazılımı kullanıyorum</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="habit5" name="habits" value="Sosyal medya gizlilik ayarlarına dikkat ediyorum">
+                                <label for="habit5">Sosyal medya gizlilik ayarlarına dikkat ediyorum</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="habit6" name="habits" value="Henüz yeterli önlem almıyorum">
+                                <label for="habit6">Henüz yeterli önlem almıyorum</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="habitOther" name="habits" value="other">
+                                <label for="habitOther">Diğer önlemler</label>
+                            </div>
+                            <input type="text" id="habitOtherText" class="other-input" placeholder="Belirtiniz">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bölüm E: Genel Değerlendirme -->
+                <div class="section" id="section-e">
+                    <h2 class="section-title">BÖLÜM E: GENEL DEĞERLENDİRME</h2>
+                    
+                    <div class="form-group">
+                        <span class="question-label">12. Üniversite eğitiminiz boyunca kendinizi en çok hangi alanda geliştirmek istiyorsunuz?</span>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="dev1" name="development" value="Teknik beceriler">
+                                <label for="dev1">Teknik beceriler</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="dev2" name="development" value="İletişim ve sunum becerileri">
+                                <label for="dev2">İletişim ve sunum becerileri</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="dev3" name="development" value="Takım çalışması">
+                                <label for="dev3">Takım çalışması</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="dev4" name="development" value="Proje yönetimi">
+                                <label for="dev4">Proje yönetimi</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="dev5" name="development" value="Yabancı dil">
+                                <label for="dev5">Yabancı dil</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="dev6" name="development" value="Liderlik becerileri">
+                                <label for="dev6">Liderlik becerileri</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="devOther" name="development" value="other">
+                                <label for="devOther">Diğer</label>
+                            </div>
+                            <input type="text" id="devOtherText" class="other-input" placeholder="Lütfen belirtiniz">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <span class="question-label">13. Eklemek istediğiniz görüş, öneri veya beklentileriniz:</span>
+                        <textarea id="comments" name="comments" rows="4" placeholder="Görüş ve önerilerinizi buraya yazabilirsiniz..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Form Action Buttons -->
+                <div class="btn-container">
+                    <button type="submit" class="btn btn-primary">Formu Tamamla</button>
+                    <button type="button" class="btn btn-secondary" id="downloadPdf" style="display: none;">📥 PDF İndir</button>
+                    <button type="button" class="btn btn-email" id="sendEmail" style="display: none; background: #EA4335;">📧 E-posta Gönder</button>
+                    <button type="button" class="btn btn-whatsapp" id="sendWhatsapp" style="display: none; background: #25D366;">📱 WhatsApp Gönder</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="assets/js/utils.js"></script>
+    <script src="assets/js/storage.js"></script>
+    <script src="assets/js/ui.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+</html>

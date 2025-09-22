@@ -1,0 +1,344 @@
+ 
+/* assets/css/themes.css - Tema ve Renk Yönetimi */
+
+:root {
+    /* Ana Renkler */
+    --primary-color: #5e72e4;
+    --primary-dark: #825ee4;
+    --secondary-color: #28a745;
+    --accent-color: #667eea;
+    --accent-dark: #764ba2;
+    
+    /* Durum Renkleri */
+    --success-color: #28a745;
+    --error-color: #dc3545;
+    --warning-color: #ffc107;
+    --info-color: #17a2b8;
+    
+    /* Gri Tonları */
+    --gray-50: #f8f9fa;
+    --gray-100: #e9ecef;
+    --gray-200: #dee2e6;
+    --gray-300: #ced4da;
+    --gray-400: #adb5bd;
+    --gray-500: #6c757d;
+    --gray-600: #495057;
+    --gray-700: #343a40;
+    --gray-800: #212529;
+    --gray-900: #0d1117;
+    
+    /* Metin Renkleri */
+    --text-primary: #2c3e50;
+    --text-secondary: #6c757d;
+    --text-muted: #8e9aaf;
+    --text-light: #ffffff;
+    
+    /* Arka Plan Renkleri */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8f9fa;
+    --bg-tertiary: #e9ecef;
+    --bg-dark: #212529;
+    
+    /* Gölge */
+    --shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    --shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    --shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+    --shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.3);
+    
+    /* Border Radius */
+    --radius-sm: 0.25rem;
+    --radius: 0.5rem;
+    --radius-lg: 0.75rem;
+    --radius-xl: 1rem;
+    
+    /* Geçişler */
+    --transition-fast: 0.15s ease;
+    --transition: 0.3s ease;
+    --transition-slow: 0.6s ease;
+}
+
+/* Açık Tema (Varsayılan) */
+.theme-light {
+    --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --card-bg: #ffffff;
+    --section-bg: #f8f9fa;
+    --border-color: #e1e8ed;
+    --input-bg: #ffffff;
+    --input-border: #e1e8ed;
+    --input-focus: var(--primary-color);
+}
+
+/* Koyu Tema */
+.theme-dark {
+    --bg-gradient: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    --card-bg: #2c3e50;
+    --section-bg: #34495e;
+    --border-color: #4a5568;
+    --input-bg: #2d3748;
+    --input-border: #4a5568;
+    --input-focus: #667eea;
+    --text-primary: #ffffff;
+    --text-secondary: #a0aec0;
+    --text-muted: #718096;
+}
+
+.theme-dark body {
+    background: var(--bg-gradient);
+    color: var(--text-primary);
+}
+
+.theme-dark .container {
+    background: var(--card-bg);
+    color: var(--text-primary);
+}
+
+.theme-dark .section {
+    background: var(--section-bg);
+}
+
+.theme-dark input,
+.theme-dark textarea,
+.theme-dark select {
+    background: var(--input-bg);
+    border-color: var(--input-border);
+    color: var(--text-primary);
+}
+
+.theme-dark .checkbox-item,
+.theme-dark .radio-item {
+    background: var(--input-bg);
+}
+
+/* Mor Tema */
+.theme-purple {
+    --primary-color: #9b59b6;
+    --primary-dark: #8e44ad;
+    --bg-gradient: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
+    --section-bg: #f4f1f8;
+}
+
+/* Mavi Tema */
+.theme-blue {
+    --primary-color: #3498db;
+    --primary-dark: #2980b9;
+    --bg-gradient: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+    --section-bg: #f0f7ff;
+}
+
+/* Yeşil Tema */
+.theme-green {
+    --primary-color: #27ae60;
+    --primary-dark: #229954;
+    --bg-gradient: linear-gradient(135deg, #27ae60 0%, #229954 100%);
+    --section-bg: #f0f8f0;
+}
+
+/* Turuncu Tema */
+.theme-orange {
+    --primary-color: #e67e22;
+    --primary-dark: #d35400;
+    --bg-gradient: linear-gradient(135deg, #e67e22 0%, #d35400 100%);
+    --section-bg: #fef5f0;
+}
+
+/* Yüksek Kontrast Tema (Erişilebilirlik) */
+.theme-high-contrast {
+    --primary-color: #000000;
+    --primary-dark: #000000;
+    --bg-gradient: #ffffff;
+    --card-bg: #ffffff;
+    --section-bg: #f5f5f5;
+    --text-primary: #000000;
+    --text-secondary: #000000;
+    --border-color: #000000;
+    --input-border: #000000;
+}
+
+.theme-high-contrast body {
+    background: var(--bg-gradient);
+}
+
+.theme-high-contrast .container,
+.theme-high-contrast .section,
+.theme-high-contrast input,
+.theme-high-contrast textarea,
+.theme-high-contrast select {
+    border: 2px solid #000000;
+}
+
+.theme-high-contrast .btn {
+    border: 3px solid #000000;
+    font-weight: bold;
+}
+
+/* Tema Değiştirici */
+.theme-switcher {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border-radius: var(--radius-lg);
+    padding: 10px;
+    box-shadow: var(--shadow-lg);
+}
+
+.theme-switcher select {
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 5px 10px;
+    background: var(--input-bg);
+    color: var(--text-primary);
+}
+
+/* Responsive Tema Ayarları */
+@media (max-width: 768px) {
+    .theme-switcher {
+        position: relative;
+        top: auto;
+        right: auto;
+        margin: 10px 0;
+        background: rgba(255, 255, 255, 0.95);
+    }
+}
+
+/* Yazdırma için Tema */
+@media print {
+    * {
+        background: white !important;
+        color: black !important;
+        box-shadow: none !important;
+    }
+    
+    .header {
+        background: white !important;
+        color: black !important;
+        border-bottom: 2px solid black;
+    }
+    
+    .section {
+        background: white !important;
+        border: 1px solid black;
+        page-break-inside: avoid;
+    }
+    
+    .btn, .theme-switcher, .loading {
+        display: none !important;
+    }
+}
+
+/* Özel Durum Stilleri */
+.theme-christmas {
+    --primary-color: #c41e3a;
+    --primary-dark: #228b22;
+    --bg-gradient: linear-gradient(135deg, #c41e3a 0%, #228b22 100%);
+    --section-bg: #fff8f8;
+}
+
+.theme-valentine {
+    --primary-color: #e91e63;
+    --primary-dark: #ad1457;
+    --bg-gradient: linear-gradient(135deg, #e91e63 0%, #f48fb1 100%);
+    --section-bg: #fce4ec;
+}
+
+/* Geçiş Animasyonları */
+.theme-transition {
+    transition: 
+        background-color var(--transition),
+        color var(--transition),
+        border-color var(--transition),
+        box-shadow var(--transition);
+}
+
+/* Tema Önizleme */
+.theme-preview {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.theme-card {
+    padding: 15px;
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    transition: var(--transition);
+    border: 2px solid transparent;
+    text-align: center;
+}
+
+.theme-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.theme-card.active {
+    border-color: var(--primary-color);
+}
+
+.theme-card-color {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin: 0 auto 10px;
+}
+
+.theme-card-name {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--text-primary);
+}
+
+/* RTL Desteği */
+[dir="rtl"] {
+    direction: rtl;
+}
+
+[dir="rtl"] .section-title::before {
+    content: "◀";
+    margin-left: 10px;
+    margin-right: 0;
+}
+
+[dir="rtl"] .radio-item,
+[dir="rtl"] .checkbox-item {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .radio-item input,
+[dir="rtl"] .checkbox-item input {
+    margin-left: 12px;
+    margin-right: 0;
+}
+
+/* Kullanıcı Tercihleri */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        color-scheme: dark;
+    }
+}
+
+/* Yardımcı Sınıflar */
+.text-primary { color: var(--text-primary) !important; }
+.text-secondary { color: var(--text-secondary) !important; }
+.text-muted { color: var(--text-muted) !important; }
+.text-success { color: var(--success-color) !important; }
+.text-error { color: var(--error-color) !important; }
+.text-warning { color: var(--warning-color) !important; }
+.text-info { color: var(--info-color) !important; }
+
+.bg-primary { background-color: var(--bg-primary) !important; }
+.bg-secondary { background-color: var(--bg-secondary) !important; }
+.bg-success { background-color: var(--success-color) !important; }
+.bg-error { background-color: var(--error-color) !important; }
+.bg-warning { background-color: var(--warning-color) !important; }
+.bg-info { background-color: var(--info-color) !important; }
